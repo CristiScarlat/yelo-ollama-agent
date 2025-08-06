@@ -8,7 +8,6 @@ services:
       - "11434"
     networks:
       - backend
-    mem_limit: 6g 
 
   api:
     build: ./api

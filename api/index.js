@@ -9,9 +9,9 @@ const OLLAMA_URL = process.env.OLLAMA_URL || 'http://localhost:11434';
 async function ensureModelAvailable() {
     try {
         await axios.post(`${OLLAMA_URL}/api/pull`, {
-            name: 'llama3'
+            name: 'gemma:2b'
         });
-        console.log('✅ LLaMA3 model pulled and ready');
+        console.log('✅ gemma:2b model pulled and ready');
     } catch (err) {
         console.error('❌ Failed to pull model:', err.message);
     }
@@ -21,7 +21,7 @@ app.post('/ask', async (req, res) => {
     try {
         const { prompt } = req.body;
         const response = await axios.post(`${OLLAMA_URL}/api/generate`, {
-            model: 'llama3',  // or another model you’ve pulled
+            model: 'gemma:2b',
             prompt,
             stream: false
         });
